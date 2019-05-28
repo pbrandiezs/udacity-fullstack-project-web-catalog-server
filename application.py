@@ -66,7 +66,7 @@ session = DBSession()
 def showLogin():
     """ Create anti-forgery state token. """
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
-                    for x in xrange(32))
+                    for x in range(32))
     login_session['state'] = state
     app_id = json.loads(open('fb_client_secrets.json', 'r').
                         read())['web']['app_id']
