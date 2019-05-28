@@ -25,7 +25,7 @@ Base = declarative_base()
 # You will use this secret key to create and verify your tokens
 secret_key = ''.join(
     random.choice(
-        string.ascii_uppercase + string.digits) for x in xrange(32))
+        string.ascii_uppercase + string.digits) for x in range(32))
 
 
 class User(Base):
