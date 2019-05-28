@@ -447,14 +447,14 @@ def categoriesJSON():
     return jsonify(categories=[category.serialize for category in categories])
 
 
-if __name__ == '__main__':
-    """ Main run web server using port 8000. """
-    app.secret_key = 'super_secret_key'
-    app.debug = True
-    context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-    context = ('ssl.cert', 'ssl.key')
-    app.run(host='0.0.0.0',
-            port=8000,
-            ssl_context=context,
-            threaded=True,
-            debug=True)
+# if __name__ == '__main__':
+#     """ Main run web server using port 8000. """
+#     app.secret_key = 'super_secret_key'
+#     app.debug = True
+#     context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+#     context = ('ssl.cert', 'ssl.key')
+#     app.run(host='0.0.0.0',
+#             port=8000,
+#             ssl_context=context,
+#             threaded=True,
+#             debug=True)
