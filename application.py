@@ -32,14 +32,14 @@
 #   Display all users
 #   Display all categories
 
-
+sys.path.append(os.path.dirname(__file__))
 from flask import Flask, render_template, request, redirect, jsonify,\
     url_for, flash
 from sqlalchemy import create_engine, asc
 from sqlalchemy import exc
 from sqlalchemy.orm import exc as orm_exc
 from sqlalchemy.orm import sessionmaker
-from /var/www/html/models import Base, User, ItemCatalog, Category
+from .models import Base, User, ItemCatalog, Category
 from flask import session as login_session
 import random
 import string
