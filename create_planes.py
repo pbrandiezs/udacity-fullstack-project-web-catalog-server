@@ -20,7 +20,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///ItemCatalog.db')
+engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
