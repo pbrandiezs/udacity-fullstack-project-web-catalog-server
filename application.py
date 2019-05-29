@@ -75,7 +75,7 @@ def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
                     for x in range(32))
     login_session['state'] = state
-    app_id = json.loads(open('fb_client_secrets.json', 'r').
+    app_id = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
                         read())['web']['app_id']
     return render_template('login.html', STATE=state, APP_ID=app_id)
 
@@ -122,9 +122,9 @@ def fbconnect():
         return response
     access_token = request.data
     # Exchange token for long-lived server-side token
-    app_id = json.loads(open('fb_client_secrets.json', 'r').
+    app_id = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
                         read())['web']['app_id']
-    app_secret = json.loads(open('fb_client_secrets.json', 'r').
+    app_secret = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
                             read())['web']['app_secret']
     fb_url = ('https://graph.facebook.com/oauth/access_token'
               '?grant_type=fb_exchange_token&client_id=%s'
