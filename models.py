@@ -106,5 +106,5 @@ class ItemCatalog(Base):
             }
 
 
-engine = create_engine('sqlite:///ItemCatalog.db')
+engine = create_engine('sqlite:///var/www/html/ItemCatalog.db')
 Base.metadata.create_all(engine)
