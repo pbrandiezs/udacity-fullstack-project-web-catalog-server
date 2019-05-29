@@ -32,7 +32,9 @@
 #   Display all users
 #   Display all categories
 
-sys.path.append(os.path.dirname(__file__))
+import sys
+import os
+sys.path.append(os.path.dirname(/var/www/html))
 from flask import Flask, render_template, request, redirect, jsonify,\
     url_for, flash
 from sqlalchemy import create_engine, asc
