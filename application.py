@@ -59,6 +59,7 @@ import ssl
 
 
 app = Flask(__name__)
+app.secret_key = 'super_secret_key'
 
 # Connect to Database and create database session
 engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
