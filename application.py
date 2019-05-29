@@ -34,7 +34,7 @@
 
 import sys
 import os
-sys.path.append(os.path.dirname(/var/www/html))
+sys.path.append(os.path.dirname("/var/www/html"))
 from flask import Flask, render_template, request, redirect, jsonify,\
     url_for, flash
 from sqlalchemy import create_engine, asc
