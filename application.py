@@ -61,7 +61,7 @@ import ssl
 app = Flask(__name__)
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///var/www/html/ItemCatalog.db')
+engine = create_engine('sqlite:////var/www/html/ItemCatalog.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
