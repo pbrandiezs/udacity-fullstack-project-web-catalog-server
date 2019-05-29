@@ -32,16 +32,20 @@
 #   Display all users
 #   Display all categories
 
+
 import sys
-import os
-sys.path.append(os.path.dirname("/var/www/html"))
+
+path = '/var/www/html'
+if path not in sys.path:
+    sys.path.insert(0, path)
+
 from flask import Flask, render_template, request, redirect, jsonify,\
     url_for, flash
 from sqlalchemy import create_engine, asc
 from sqlalchemy import exc
 from sqlalchemy.orm import exc as orm_exc
 from sqlalchemy.orm import sessionmaker
-from .models import Base, User, ItemCatalog, Category
+from models import Base, User, ItemCatalog, Category
 from flask import session as login_session
 import random
 import string
@@ -57,7 +61,7 @@ import ssl
 app = Flask(__name__)
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///ItemCatalog.db')
+engine = create_engine('sqlite:///var/www/html/ItemCatalog.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
