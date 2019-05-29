@@ -35,7 +35,7 @@
 
 import sys
 
-path = '/var/www/html'
+path = '/var/www/html/catalog'
 if path not in sys.path:
     sys.path.insert(0, path)
 
@@ -61,7 +61,7 @@ import ssl
 app = Flask(__name__)
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:////var/www/html/ItemCatalog.db')
+engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -464,3 +464,7 @@ def categoriesJSON():
 #             ssl_context=context,
 #             threaded=True,
 #             debug=True)
+
+
+#app.run()
+
