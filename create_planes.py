@@ -9,6 +9,7 @@
 # with users and several planes for testing.
 #
 
+import psycopg2
 from sqlalchemy import create_engine
 from sqlalchemy import exc
 from sqlalchemy.orm import sessionmaker
@@ -20,7 +21,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
+# engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
+engine = create_engine('postgres+psycopg2:///ItemCatalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
