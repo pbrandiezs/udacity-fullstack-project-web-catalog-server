@@ -121,6 +121,7 @@ def fbconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     access_token = request.data
+    access_token = access_token.decode('utf-8')
     # Exchange token for long-lived server-side token
     app_id = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
                         read())['web']['app_id']
@@ -132,6 +133,7 @@ def fbconnect():
     url = fb_url % (app_id, app_secret, access_token)
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
+    result = result.decode('utf-8')
 
     # Use token to get user info from API
     userinfo_url = "https://graph.facebook.com/v2.8/me"
@@ -149,6 +151,7 @@ def fbconnect():
     url = fb_url % token
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
+    result = result.decode('utf-8')
     data = json.loads(result)
     login_session['provider'] = 'facebook'
     login_session['username'] = data["name"]
@@ -164,6 +167,7 @@ def fbconnect():
     url = fb_url % token
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
+    result = result.decode('utf-8')
     data = json.loads(result)
 
     login_session['picture'] = data["data"]["url"]
