@@ -14,6 +14,7 @@
 # if path not in sys.path:
 #    sys.path.insert(0, path)
 
+import psycopg2
 from sqlalchemy import Column, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, backref
@@ -112,5 +113,6 @@ class ItemCatalog(Base):
             }
 
 
-engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
+# engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
+engine = create_engine('postgres+psycopg2:///ItemCatalog.db')
 Base.metadata.create_all(engine)
