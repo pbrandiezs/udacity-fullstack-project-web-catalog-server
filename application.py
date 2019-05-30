@@ -39,6 +39,7 @@ path = '/var/www/html/catalog'
 if path not in sys.path:
     sys.path.insert(0, path)
 
+import psycopg2
 from flask import Flask, render_template, request, redirect, jsonify,\
     url_for, flash
 from sqlalchemy import create_engine, asc
@@ -62,9 +63,10 @@ app = Flask(__name__)
 app.secret_key = 'super_secret_key'
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db',
-    connect_args={'check_same_thread': False}
-    )
+#engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db',
+#    connect_args={'check_same_thread': False}
+#    )
+engine = create_engine('postgres+psycopg2:///ItemCatalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
