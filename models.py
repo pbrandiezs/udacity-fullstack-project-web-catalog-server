@@ -114,5 +114,5 @@ class ItemCatalog(Base):
 
 
 # engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
-engine = create_engine('postgres+psycopg2:///ItemCatalog.db')
+engine = create_engine('postgres+psycopg2:///ItemCatalog')
 Base.metadata.create_all(engine)
