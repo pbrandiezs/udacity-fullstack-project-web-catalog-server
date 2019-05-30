@@ -62,7 +62,9 @@ app = Flask(__name__)
 app.secret_key = 'super_secret_key'
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
+engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db',
+    connect_args={'check_same_thread': False}
+    )
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
