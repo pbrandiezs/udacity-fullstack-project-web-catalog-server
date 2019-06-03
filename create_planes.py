@@ -31,7 +31,6 @@ session = DBSession()
 # Add users
 NewUser = User(
     email="pbrandiezs@gmail.com",
-    id=1,
     picture="https://platform-lookaside.fbsbx.com/platform/profilepic/"
             "?asid=2296167867307191"
             "&height=200&width=200"
@@ -49,7 +48,6 @@ except exc.IntegrityError:
 
 NewUser = User(
     email="mickeymouse@disney.com",
-    id=2,
     picture="https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/"
             "Mickey_Mouse.png/220px-Mickey_Mouse.png",
     username="Mickey Mouse"
@@ -64,7 +62,6 @@ except exc.IntegrityError:
 
 # Add Categories
 NewCategory = Category(
-    id=1,
     category_name="Gulfstream"
     )
 try:
@@ -76,7 +73,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewCategory = Category(
-    id=2,
     category_name="Crop Duster"
     )
 try:
@@ -88,7 +84,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewCategory = Category(
-    id=3,
     category_name="Falcon"
     )
 try:
@@ -100,7 +95,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewCategory = Category(
-    id=4,
     category_name="Embraer"
     )
 try:
@@ -112,7 +106,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewCategory = Category(
-    id=5,
     category_name="Aerospatiale/BAC"
     )
 try:
@@ -125,7 +118,6 @@ except exc.IntegrityError:
 
 # Add planes
 NewPlane = ItemCatalog(
-    id=1,
     category_id=1,
     item_name="G650ER",
     item_description="Long range private jet",
@@ -140,7 +132,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewPlane = ItemCatalog(
-    id=2,
     category_id=1,
     item_name="G550",
     item_description="A very nice jet",
@@ -155,7 +146,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewPlane = ItemCatalog(
-    id=3,
     category_id=1,
     item_name="G650ER",
     item_description="Mickey Mouse's Long range private jet",
@@ -170,7 +160,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewPlane = ItemCatalog(
-    id=4,
     category_id=2,
     item_name="Piper Cub",
     item_description="Little yellow airplane that spews toxic chemicals"
@@ -186,7 +175,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewPlane = ItemCatalog(
-    id=5,
     category_id=3,
     item_name="10X",
     item_description="The Dassault Mystere/Falcon 10 is an early corporate"
@@ -203,7 +191,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewPlane = ItemCatalog(
-    id=6,
     category_id=4,
     item_name="Phenom 100",
     item_description="The Embraer EMB-500 Phenom 100 is a very light jet"
@@ -219,7 +206,6 @@ except exc.IntegrityError:
     session.rollback()
 
 NewPlane = ItemCatalog(
-    id=7,
     category_id=5,
     item_name="Concorde",
     item_description="The Aerospatiale/BAC Concorde is a French-British"
