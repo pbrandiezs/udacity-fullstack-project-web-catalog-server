@@ -3,7 +3,7 @@
 # Program: application.py
 # Author: Perry Brandiezs
 # Date: May 1, 2019
-# Last Updated: May 6, 2019
+# Last Updated: June 3, 2019
 
 # See the README.md at vagrant/catalog/README.md
 # See the expected output document at vagrant/catalog/Expected_Output.docx
@@ -34,11 +34,6 @@
 
 
 import sys
-
-path = '/var/www/html/catalog'
-if path not in sys.path:
-    sys.path.insert(0, path)
-
 import psycopg2
 from flask import Flask, render_template, request, redirect, jsonify,\
     url_for, flash
@@ -46,7 +41,6 @@ from sqlalchemy import create_engine, asc
 from sqlalchemy import exc
 from sqlalchemy.orm import exc as orm_exc
 from sqlalchemy.orm import sessionmaker
-from models import Base, User, ItemCatalog, Category
 from flask import session as login_session
 import random
 import string
@@ -57,13 +51,18 @@ import json
 from flask import make_response
 import requests
 import ssl
+path = '/var/www/html/catalog'
+if path not in sys.path:
+    sys.path.insert(0, path)
+try:
+    from models import Base, User, ItemCatalog, Category
 
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
 
 # Connect to Database and create database session
-#engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db',
+# engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db',
 #    connect_args={'check_same_thread': False}
 #    )
 engine = create_engine('postgres+psycopg2:///ItemCatalog')
@@ -79,8 +78,9 @@ def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
                     for x in range(32))
     login_session['state'] = state
-    app_id = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
-                        read())['web']['app_id']
+    app_id = json.loads(
+        open('/var/www/html/catalog/fb_client_secrets.json', 'r').
+        read())['web']['app_id']
     return render_template('login.html', STATE=state, APP_ID=app_id)
 
 
@@ -127,10 +127,12 @@ def fbconnect():
     access_token = request.data
     access_token = access_token.decode('utf-8')
     # Exchange token for long-lived server-side token
-    app_id = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
-                        read())['web']['app_id']
-    app_secret = json.loads(open('/var/www/html/catalog/fb_client_secrets.json', 'r').
-                            read())['web']['app_secret']
+    app_id = json.loads(
+        open('/var/www/html/catalog/fb_client_secrets.json', 'r').
+        read())['web']['app_id']
+    app_secret = json.loads(
+        open('/var/www/html/catalog/fb_client_secrets.json', 'r').
+        read())['web']['app_secret']
     fb_url = ('https://graph.facebook.com/oauth/access_token'
               '?grant_type=fb_exchange_token&client_id=%s'
               '&client_secret=%s&fb_exchange_token=%s')
@@ -460,20 +462,3 @@ def categoriesJSON():
     session = DBSession()
     categories = session.query(Category).all()
     return jsonify(categories=[category.serialize for category in categories])
-
-
-# if __name__ == '__main__':
-#     """ Main run web server using port 8000. """
-#     app.secret_key = 'super_secret_key'
-#     app.debug = True
-#     context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-#     context = ('ssl.cert', 'ssl.key')
-#     app.run(host='0.0.0.0',
-#             port=8000,
-#             ssl_context=context,
-#             threaded=True,
-#             debug=True)
-
-
-#app.run()
-
