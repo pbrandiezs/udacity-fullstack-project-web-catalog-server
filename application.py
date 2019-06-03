@@ -56,6 +56,9 @@ if path not in sys.path:
     sys.path.insert(0, path)
 try:
     from models import Base, User, ItemCatalog, Category
+except ImportError:
+    print("Error: Import Error models.py not found.\n")
+    sys.exit(1)
 
 
 app = Flask(__name__)
