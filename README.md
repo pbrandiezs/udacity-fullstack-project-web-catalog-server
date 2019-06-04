@@ -101,6 +101,7 @@ Werkzeug==0.15.4
 1. Remove the flask web server from the bottom of the code
 ```
 ### Summary of third-party resources used:
+```
 Reference sites:
 
 https://www.fullstackpython.com/blog/postgresql-python-3-psycopg2-ubuntu-1604.html
@@ -131,7 +132,7 @@ import not at top of file reference:
 https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with-sys-path
 
 
-
+```
 ## Installation for reference only needed if deploying a new server
 * Deploy an AWS LightSail server, and log in to ubuntu per AWS procedures.
 ### Update the server
@@ -176,7 +177,7 @@ sudo ufw allow ntp
 sudo ufw enable
 sudo ufw status
 ```
-### Add user grader and catalog
+### Add user grader
 ```
 sudo adduser grader
 ```
@@ -343,9 +344,11 @@ sudo -u catalog python3 create_planes.py
 sudo service apache2 start
 ```
 ### Update software regularly
+```
 sudo apt-get update
 sudo apt-get upgrade
 sudo reboot
+```
 ### Connect to the website
 ```
 https://34.210.153.255.xip.io/
