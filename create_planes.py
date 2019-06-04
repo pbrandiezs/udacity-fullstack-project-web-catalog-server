@@ -3,7 +3,7 @@
 # Program: create_planes.py
 # Author: Perry Brandiezs
 # Date: May 1, 2019
-# Last Updated: May 28, 2019
+# Last Updated: June 4, 2019
 #
 # This program populates the ItemCatalog database
 # with users and several planes for testing.
@@ -21,7 +21,6 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 # Connect to Database and create database session
-# engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
 engine = create_engine('postgres+psycopg2:///ItemCatalog')
 Base.metadata.bind = engine
 

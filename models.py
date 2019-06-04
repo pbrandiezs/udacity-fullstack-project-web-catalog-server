@@ -3,16 +3,10 @@
 # Program: models.py
 # Author: Perry Brandiezs
 # Date: May 1, 2019
-# Last Updated: May 28, 2019
+# Last Updated: June 4, 2019
 
 # This program sets up the database used by application.py
 
-
-# import sys
-
-# path = '/var/www/html'
-# if path not in sys.path:
-#    sys.path.insert(0, path)
 
 import psycopg2
 from sqlalchemy import Column, ForeignKey, Integer, String, UniqueConstraint
@@ -113,6 +107,5 @@ class ItemCatalog(Base):
             }
 
 
-# engine = create_engine('sqlite:////var/www/html/catalog/ItemCatalog.db')
 engine = create_engine('postgres+psycopg2:///ItemCatalog')
 Base.metadata.create_all(engine)
