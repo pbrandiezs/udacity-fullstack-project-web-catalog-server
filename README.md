@@ -27,7 +27,7 @@ This program is used to demonstrate a Linux Web Server configuration using:
 *   PostgreSQL
 
 ## Notes to Udacity grader
-* The IP address is 34.210.153.255, ssh port 2000
+* The IP address is 34.210.153.255, ssh port 2200
 * You may login with ssh grader@34.210.153.255 -p 2200 -i privatekeyfile, using the privatekeyfile provided with project submission
 * The URL is https://34.210.153.255.xip.io
 * Note https is required to support oauth2 login with facebook, connecting with http will redirect to https.
@@ -342,6 +342,10 @@ sudo -u catalog python3 models.py
 sudo -u catalog python3 create_planes.py
 sudo service apache2 start
 ```
+### Update software regularly
+sudo apt-get update
+sudo apt-get upgrade
+sudo reboot
 ### Connect to the website
 ```
 https://34.210.153.255.xip.io/
