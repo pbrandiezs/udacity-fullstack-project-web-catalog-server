@@ -139,6 +139,8 @@ https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with
 ```
 sudo apt-get update
 sudo apt-get upgrade
+If 'held back packages' occur, do:
+    sudo apt-get --with-new-pkgs upgrade
 sudo reboot
 ```
 ### Enforce key based login
@@ -156,6 +158,11 @@ If not already defined:
 add port HTTP 80, 
 add port SSH 22,
 add port custom 123 (ntp).
+```
+### Configure ssh to not allow root login
+```
+sudo vi /etc/ssh/sshd_config
+Change line PermitRootLogin no
 ```
 ### Configure ssh to use port 2200
 ```
@@ -347,6 +354,8 @@ sudo service apache2 start
 ```
 sudo apt-get update
 sudo apt-get upgrade
+If 'held back packages' occur, do:
+    sudo apt-get --with-new-pkgs upgrade
 sudo reboot
 ```
 ### Connect to the website
